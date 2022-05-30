@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vnext_BasicTraining::greetings" title="Student" translate="title" module="Vnext_BasicTraining" parent="Magento_Backend::content" sortOrder="50" dependsOnModule="Vnext_BasicTraining" resource="Vnext_BasicTraining::greetings"/>
+        <add id="Vnext_BasicTraining::greetings_index" title="Index" translate="title" module="Vnext_BasicTraining" parent="Vnext_BasicTraining::greetings" sortOrder="10" dependsOnModule="Vnext_BasicTraining" action="student/training/index" resource="Vnext_BasicTraining::greetings"/>
+        <add id="Vnext_BasicTraining::greetings_edit" title="Edit" translate="title" module="Vnext_BasicTraining" parent="Vnext_BasicTraining::greetings" sortOrder="10" dependsOnModule="Vnext_BasicTraining" action="student/training/edit" resource="Vnext_BasicTraining::greetings"/>
+        <add id="Vnext_BasicTraining::greetings_delete" title="Delete" translate="title" module="Vnext_BasicTraining" parent="Vnext_BasicTraining::greetings" sortOrder="10" dependsOnModule="Vnext_BasicTraining" action="student/training/delete" resource="Vnext_BasicTraining::greetings"/>
+    </menu>
+</config>

@@ -1,0 +1,45 @@
+<?php
+$viewModel = $block->getViewModel();
+$postArray = $viewModel->getDetail();
+
+echo ($postArray->getName());
+?>
+<?php $gridrecords = $block->getDetail(); ?>
+<div class="table-wrapper orders-history">
+
+    <!--        Tabel-->
+    <table class="data table table-order-items history" id="my-orders-table">
+        <caption class="table-caption"><?php echo __('Grid Record') ?></caption>
+        <thead>
+        <tr>
+            <th scope="col" class="col id"><?php echo __('ID') ?></th>
+            <th scope="col" class="col title"><?php echo __('Name') ?></th>
+            <th scope="col" class="col product"><?php echo __('Gender') ?></th>
+            <th scope="col" class="col amount"><?php echo __('Date of birth') ?></th>
+<!--            <th scope="col" class="col amount">--><?php //echo __('Action') ?><!--</th>-->
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td data-th="<?= $block->escapeHtml(__('Entity Id')) ?>" class="col id">
+                <?php echo $gridrecords->getId() ?>
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Name')) ?>" class="col id">
+                <?php echo $gridrecords->getName() ?>
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Gender')) ?>" class="col id">
+                <?php if($gridrecords->getGender()==1){
+                    echo "Female";
+                }else{
+                    echo "Male";
+                } ?>
+            </td>
+            <td data-th="<?= $block->escapeHtml(__('Dob')) ?>" class="col id">
+                <?php echo $gridrecords->getDob() ?>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>

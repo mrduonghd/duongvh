@@ -1,0 +1,123 @@
+<?php
+$student = $block->getCustomData();
+?>
+<form class="form" action="<?= $block->escapeHtml($block->getUrl('student/index/search')) ?>" method="post">
+
+    <fieldset>
+        <legend><span><?php /* @escapeNotVerified */
+                echo __('Filter') ?></span></legend>
+        <br>
+        <div>
+            <label for="id" class="label">
+                <span><?php /* @escapeNotVerified */
+                    echo __('ID') ?></span>
+            </label>
+
+            <div class="control">
+                <input type="text" id="id"
+                       name="id"
+                       class="input-text">
+            </div>
+        </div>
+        <div>
+            <label for="name" class="label">
+                <span><?php /* @escapeNotVerified */
+                    echo __('Name') ?></span>
+            </label>
+
+            <div class="control">
+                <input type="text" id="name"
+                       name="name"
+                       class="input-text">
+            </div>
+        </div>
+        <div>
+            <label for="gender">Gender</label>
+            <select class="control" id="gender" name="gender">
+                <option value=""></option>
+                <option value="male">Male</option>
+                <option value="1">Female</option>
+            </select>
+        </div>
+        <div>
+            <p>Age</p>
+            <input type="radio" id="age1" name="age" value="0-30">
+            <label for="age1">0 - 30</label><br>
+            <input type="radio" id="age2" name="age" value="31-60">
+            <label for="age2">31 - 60</label><br>
+            <input type="radio" id="age3" name="age" value="61-100">
+            <label for="age3">61 - 100</label><br><br>
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action submit primary" title="<?php /* @escapeNotVerified */
+                echo __('Submit') ?>">
+                <span><?php /* @escapeNotVerified */
+                    echo __('Submit') ?></span>
+                </button>
+            </div>
+        </div>
+    </fieldset>
+
+
+</form>
+<fieldset class="fieldset">
+    <?php
+    if (count($student)) {
+        ?>
+        <div class="table-wrapper custom-data " id="employee_table">
+            <table class="data table table-data-items ">
+                <caption class="table-caption"><?= $block->escapeHtml('Custom Pagination') ?></caption>
+                <thead>
+                <tr>
+                    <th scope="col" class="col name"><a
+                            href="<?php echo $block->getUrl('student/index/sort') . '?key=id' ?>"><?= $block->escapeHtml('ID') ?></a>
+                    </th>
+                    <th scope="col" class="col name"><a
+                            href="<?php echo $block->getUrl('student/index/sort') . '?key=name' ?>"><?= $block->escapeHtml('Name') ?></a>
+                    </th>
+                    <th scope="col" class="col gender"><?= $block->escapeHtml('Gender') ?></th>
+                    <th scope="col" class="col dob"><a
+                            href="<?php echo $block->getUrl('student/index/sort') . '?key=dob' ?>"><?= $block->escapeHtml('Date of birth') ?></a>
+                    </th>
+                    <th scope="col" class="col action">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($student as $item): ?>
+                    <tr>
+                        <td data-th="ID" class="col id">
+                            <span><?= $block->escapeHtml($item->getEntity_id()) ?></span>
+                        </td>
+                        <td data-th="Name" class="col name">
+                            <span><?= $block->escapeHtml($item->getName()) ?></span>
+                        </td>
+                        <td data-th="Gender" class="col gender">
+                            <?php if ($block->escapeHtml($item->getGender()) == 0): ?>
+                                <span>Male</span>
+                            <?php else: ?>
+                                <span>Female</span>
+                            <?php endif; ?>
+                        </td>
+                        <td data-th="dob" class="col dob">
+                            <span><?= $block->escapeHtml($item->getDob()) ?></span>
+                        </td>
+                        <td class="col detail">
+                            <a href="<?php echo $block->getUrl('student/index/detail') . '?ids=' . $item->getEntity_id() ?>">Detail</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <?php if ($block->getPagerHtml()): ?>
+            <div class="order-products-toolbar toolbar bottom">
+                <?= $block->getPagerHtml() ?>
+            </div>
+        <?php endif ?>
+    <?php } else { ?>
+        <div class="message info empty">
+            <span><?= $block->escapeHtml('You have no data in table.') ?></span>
+        </div>
+    <?php } ?>
+</fieldset>
