@@ -1,7 +1,9 @@
 <?php
 $student = $block->getCustomData();
+//$studentSort = $block->getStudentSort();
+
 ?>
-<form class="form" action="<?= $block->escapeHtml($block->getUrl('student/index/search')) ?>" method="post">
+<form class="form" action="<?= $block->escapeHtml($block->getUrl('student/index/index')) ?>" method="get">
 
     <fieldset>
         <legend><span><?php /* @escapeNotVerified */
@@ -71,14 +73,14 @@ $student = $block->getCustomData();
                 <thead>
                 <tr>
                     <th scope="col" class="col name"><a
-                            href="<?php echo $block->getUrl('student/index/sort') . '?key=id' ?>"><?= $block->escapeHtml('ID') ?></a>
+                            href="<?php echo $block->getUrl('student/index/index') . '?key=id' ?>"><?= $block->escapeHtml('ID') ?></a>
                     </th>
                     <th scope="col" class="col name"><a
-                            href="<?php echo $block->getUrl('student/index/sort') . '?key=name' ?>"><?= $block->escapeHtml('Name') ?></a>
+                            href="<?php echo $block->getUrl('student/index/index') . '?key=name' ?>"><?= $block->escapeHtml('Name') ?></a>
                     </th>
                     <th scope="col" class="col gender"><?= $block->escapeHtml('Gender') ?></th>
                     <th scope="col" class="col dob"><a
-                            href="<?php echo $block->getUrl('student/index/sort') . '?key=dob' ?>"><?= $block->escapeHtml('Date of birth') ?></a>
+                            href="<?php echo $block->getUrl('student/index/index') . '?key=dob' ?>"><?= $block->escapeHtml('Date of birth') ?></a>
                     </th>
                     <th scope="col" class="col action">Action</th>
                 </tr>

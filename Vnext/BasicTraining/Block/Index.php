@@ -48,7 +48,45 @@ class Index extends \Magento\Framework\View\Element\Template
         $page = ($this->getRequest()->getParam('p')) ? $this->getRequest()->getParam('p') : 1;
         $pageSize = ($this->getRequest()->getParam('limit')) ? $this->getRequest()->getParam('limit') : 5; // set minimum records
         // get custom collection
+
+        $key = $this->getRequest()->getParam('key');
+        $id = $this->getRequest()->getParam('id');
+        $name = $this->getRequest()->getParam('name');
+        $gender = $this->getRequest()->getParam('gender');
+        $dob = $this->getRequest()->getParam('age');
+        if ($dob){
+            $str = explode('-', $dob);
+            $dobFrom = (int)date("Y") - (int)$str[0];
+            $dobTo = (int)date("Y") - (int)$str[1];
+            $dobFromQuery = date_create("{$dobFrom}-01-01");
+            $dobToQuery = date_create("{$dobTo}-12-31");
+        }
+
         $collection = $this->student->getCollection();
+        if ($id){
+            $collection->addFieldToFilter('entity_id', ['eq' => $id]);
+        }
+        if ($name){
+            $collection->addFieldToFilter('name', array('like' => '%'.$name.'%'));
+        }
+        if ($gender){
+            if($gender == 'male'){
+                $collection->addFieldToFilter('gender', ['like' => 0]);
+            }else{
+                $collection->addFieldToFilter('gender', ['like' => 1]);
+            }
+        }
+        if ($dob){
+            $collection->addFieldToFilter('dob', array('gteq' => $dobToQuery))->addFieldToFilter('dob', array('lteq' => $dobFromQuery));
+        }
+
+        if($key == 'id'){
+            $collection->setOrder('entity_id', 'DESC');
+        }elseif ($key == 'name'){
+            $collection->setOrder('name', 'DESC');
+        }else{
+            $collection->setOrder('dob', 'DESC');
+        }
         $collection->setPageSize($pageSize);
         $collection->setCurPage($page);
         return $collection;
