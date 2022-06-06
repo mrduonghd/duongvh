@@ -20,40 +20,52 @@ class AddDataStudent implements DataPatchInterface
     {
         $sampleData = [
             [
-                'name' => 'Duong',
+                'name' => 'Vu Hai Duong',
                 'gender' => '0',
                 'dob' => '1998-6-23',
-                'address' => 'Mai Dich - HN'
+                'address' => 'Mai Dich - HN',
+                'slug' => 'Duong',
+                'email' => 'duong@gmail.com'
             ],
             [
-                'name' => 'Dan',
+                'name' => 'Nguyen Viet Dan',
                 'gender' => '0',
                 'dob' => '1999-6-23',
-                'address' => 'My Dinh - HN'
+                'address' => 'My Dinh - HN',
+                'slug' => 'Dan',
+                'email' => 'dan@gmail.com'
             ],
             [
-                'name' => 'Toan',
+                'name' => 'Luong Thanh Toan',
                 'gender' => '0',
                 'dob' => '1998-6-23',
-                'address' => 'Nhon - HN'
+                'address' => 'Nhon - HN',
+                'slug' => 'Toan',
+                'email' => 'toan@gmail.com'
             ],
             [
-                'name' => 'Hoa',
+                'name' => 'Nguyen Dieu Hoa',
                 'gender' => '1',
                 'dob' => '1998-6-23',
-                'address' => 'Nhon - HN'
+                'address' => 'Nhon - HN',
+                'slug' => 'Hoa',
+                'email' => 'hoa@gmail.com'
             ],
             [
-                'name' => 'Lien',
+                'name' => 'Ngo Sy Lien',
                 'gender' => '1',
                 'dob' => '1998-6-23',
-                'address' => 'Nhon - HN'
+                'address' => 'Nhon - HN',
+                'slug' => 'Lien',
+                'email' => 'lien@gmail.com'
             ],
             [
-                'name' => 'Ha',
+                'name' => 'Nguyen Thu Ha',
                 'gender' => '1',
                 'dob' => '1998-6-23',
-                'address' => 'Nhon - HN'
+                'address' => 'Nhon - HN',
+                'slug' => 'Ha',
+                'email' => 'ha@gmail.com'
             ]
         ];
         foreach ($sampleData as $data) {

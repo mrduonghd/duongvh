@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Vnext\BasicTraining\Api\StudentRepositoryInterface" type="Vnext\BasicTraining\Model\StudentRepository"/>
+    <preference for="Vnext\BasicTraining\Api\Data\StudentInterface" type="Vnext\BasicTraining\Model\Student"/>
+    <preference for="Vnext\BasicTraining\Api\Data\StudentSearchResultInterface" type="Vnext\BasicTraining\Model\StudentSearchResult"/>
+
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="commandexample_somecommand" xsi:type="object">Vnext\BasicTraining\Console\Command\StudentListCommand</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
